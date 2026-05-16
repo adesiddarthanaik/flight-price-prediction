@@ -1,60 +1,70 @@
-# End-to-End Machine Learning using AWS SageMaker Course
+# Flight Price Prediction
 
-Welcome to the AWS SageMaker End-to-End Machine Learning Course conducted in partnership with CampusX! 🚀
+A machine learning web application that predicts Indian domestic flight prices based on travel details such as airline, route, duration, and number of stops.
 
-This comprehensive course is designed to take you through the entire workflow of implementing a machine learning project using AWS SageMaker. Whether you're a beginner or an experienced practitioner, these 6 sessions will provide you with theoretical and practical knowledge as well as hands-on experience to build, deploy, and manage machine learning models on the cloud.
+## Live Demo
 
-## Relevant Links
-- [Course](https://learnwith.campusx.in/courses/Flight-Price-Prediction-using-AWS-Sagemaker-660db0499ecb7050edff6e77)
-- [Web Application](https://sagemaker-flight-prices-prediction-5yfn7cnnpxta2k23jvf4ic.streamlit.app/)
-- [Course Instructor](https://www.linkedin.com/in/mohammed-misbahullah-sheriff/)
+[flight-price-prediction.streamlit.app](https://adesiddarthanaik-flight-price-prediction-app-xyjmiu.streamlit.app/)
 
-## Course Overview
+## Tech Stack
 
-- **Session 1: Introduction to AWS SageMaker**
-  - Overview of SageMaker, S3, EC2 & IAM features and capabilities
-  - Setting up AWS environment and SageMaker instance
+- **ML Model:** XGBoost (trained on AWS SageMaker)
+- **Feature Engineering:** scikit-learn Pipelines, ColumnTransformer, feature-engine
+- **Frontend:** Streamlit
+- **Deployment:** Streamlit Cloud
+- **Cloud Services:** AWS SageMaker (model training), AWS S3 (data storage)
 
-- **Session 2: GitHub Setup & Data Cleaning**
-  - Setting up local & remote repository using GitHub
-  - Data Cleaning using Numpy and Pandas best practices
+## Features
 
-- **Session 3: Exploratory Data Analysis**
-  - Understanding the workflow of systematically analyzing datasets
-  - Understanding the various plots, statistical measures and hypothesis tests to analyze datasets
+- Predicts flight prices for major Indian airlines and routes
+- Handles categorical, numerical, and datetime feature types through a unified preprocessing pipeline
+- Custom feature engineering including RBF kernel similarity, time-of-day encoding, and target-based encoding
+- Real-time predictions via an interactive web interface
 
-- **Session 4: Exploratory Data Analysis (continued)**
-  - Exploring a custom EDA module for convenience and significantly reduce complexity of analyzing datasets
-  - Performing in-depth analysis of various kinds of numeric, categorical and date-time variables
-  - Leveraging statistical measures, hypothesis tests, and univariate, bivariate and multivariate plots
+## How It Works
 
-- **Session 5: Feature Engineering and Data Preprocessing**
-  - Understanding feature engineering teachniques for different types of variables
-  - Creating scikit-learn compatible custom classes and functions
-  - Using advanced scikit-learn features for feature engineering and data preprocessing such as:
-     - Pipeline
-     - Feature Union
-     - Function Transformer
-     - Column Transformer
+1. User inputs flight details (airline, source, destination, date, time, duration, stops)
+2. The preprocessing pipeline transforms raw inputs into model-ready features
+3. A trained XGBoost model predicts the fare
+4. Predicted price is displayed in INR
 
-- **Session 6: Model Training and Deployment**
-  - Training and Tuning a machine learning model on SageMaker
-  - Using S3 buckets for storage and EC2 for computing purposes
-  - Creating a web application from scratch and deploying over cloud using Streamlit
+## Dataset
 
-## Prerequisites
+The dataset contains Indian domestic flight records with the following attributes:
 
-- Familiarity with Python programming language
-- Basic understanding of machine learning concepts
+| Feature | Description |
+|---|---|
+| airline | Name of the airline |
+| date_of_journey | Date of travel |
+| source | Departure city |
+| destination | Arrival city |
+| dep_time | Departure time |
+| arrival_time | Arrival time |
+| duration | Flight duration in minutes |
+| total_stops | Number of stops |
+| additional_info | Meal info, baggage, etc. |
+| price | Ticket price in INR (target) |
 
-## Getting Started
+## Project Structure
 
-To get started with the course, simply clone this repository and follow along with the course sessions and materials provided in each session's directory.
-
-```bash
-git clone https://github.com/MisbahullahSheriff/sagemaker-flight-prices-prediction.git
+```
+flight-price-prediction/
+├── app.py                 # Streamlit web application
+├── train.csv              # Training dataset
+├── xgboost-model          # Trained XGBoost model
+├── requirements.txt       # Python dependencies
+└── README.md
 ```
 
-Happy learning! 🌟
-<br>
-Hope you enjoy the course 😊
+## Run Locally
+
+```bash
+git clone https://github.com/adesiddarthanaik/flight-price-prediction.git
+cd flight-price-prediction
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+## License
+
+This project is open source and available for educational purposes.
