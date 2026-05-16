@@ -8,11 +8,10 @@ A machine learning web application that predicts Indian domestic flight prices b
 
 ## Tech Stack
 
-- **ML Model:** XGBoost (trained on AWS SageMaker)
+- **ML Model:** XGBoost
 - **Feature Engineering:** scikit-learn Pipelines, ColumnTransformer, feature-engine
 - **Frontend:** Streamlit
 - **Deployment:** Streamlit Cloud
-- **Cloud Services:** AWS SageMaker (model training), AWS S3 (data storage)
 
 ## Features
 
